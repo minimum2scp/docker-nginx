@@ -15,12 +15,20 @@ Rebuild [nginx.org mainline package](http://nginx.org/en/linux_packages.html) wi
 
 ```shell
 cd direcotry
-docker build -t image-name:tag .
+docker build -t <image-name> .
 ```
 
 or
 
 ```shell
 docker-compose build <directory-name>
+```
+
+## Copy binary packages from image
+
+```shell
+docker run --rm --workdir /home/debian/build --user debian --entrypoint /bin/sh \
+ <image_name> -c "tar cf - --exclude=nginx-1.11.4 *.deb" \
+ | tar xf - -C /dest/path/to/extract/
 ```
 
