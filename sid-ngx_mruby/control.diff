@@ -1,0 +1,13 @@
+--- a/debian/control	2016-05-31 23:38:38.000000000 +0900
++++ b/debian/control	2016-06-10 02:59:02.587870054 +0900
+@@ -64,3 +64,10 @@
+ Depends: ${misc:Depends}, ${shlibs:Depends}, nginx (= ${source:Version})
+ Description: nJScript module
+  This package contains dynamic nJScript module for nginx.
++
++Package: nginx-module-mruby
++Architecture: any
++Priority: extra
++Depends: ${misc:Depends}, ${shlibs:Depends}, nginx (= ${source:Version})
++Description: mruby module
++ This package contains dynamic mruby module for nginx.
