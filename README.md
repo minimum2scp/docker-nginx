@@ -21,7 +21,19 @@ docker build -t <image-name> .
 or
 
 ```shell
-docker-compose build <directory-name>
+docker-compose build [<directory-name> ...]
+```
+
+## Pull
+
+```
+docker pull <image-name>
+```
+
+or
+
+```shell
+docker-compose pull [<directory-name> ...]
 ```
 
 ## Copy binary packages from image
