@@ -27,8 +27,6 @@ docker-compose build <directory-name>
 ## Copy binary packages from image
 
 ```shell
-docker run --rm --workdir /home/debian/build --user debian --entrypoint /bin/sh \
- <image_name> -c "tar cf - --exclude=nginx-1.11.4 *.deb" \
- | tar xf - -C /dest/path/to/extract/
+./copy-packages.sh <image_name> /dest/path/to/extract/
 ```
 
