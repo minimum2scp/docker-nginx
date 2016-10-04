@@ -21,6 +21,6 @@ docker build -t image-name:tag .
 or
 
 ```shell
-docker-compose build
+docker-compose build <directory-name>
 ```
 

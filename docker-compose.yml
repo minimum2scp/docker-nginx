@@ -1,14 +1,14 @@
 version: '2'
 services:
-  nginx_sid:
+  sid:
     image: minimum2scp/nginx:sid
     build:
       context: sid
-  nginx_sid_ngx_mruby:
+  sid-ngx_mruby:
     image: minimum2scp/nginx:sid-ngx_mruby
     build:
       context: sid-ngx_mruby
-  nginx_jessie_ngx_mruby:
+  jessie-ngx_mruby:
     image: minimum2scp/nginx:jessie-ngx_mruby
     build:
       context: jessie-ngx_mruby
