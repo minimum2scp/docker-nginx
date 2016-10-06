@@ -32,4 +32,7 @@ RUN dpkg -i nginx_${NGINX_VERSION}-1~sid+local1_amd64.deb nginx-module-njs_${NGI
 RUN apt-get install -f -y --no-install-recommends
 
 WORKDIR /
+EXPOSE 22 80
+ENTRYPOINT ["/opt/init-wrapper/sbin/entrypoint.sh"]
+CMD ["/sbin/init"]
 

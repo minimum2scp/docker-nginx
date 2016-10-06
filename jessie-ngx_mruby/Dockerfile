@@ -47,4 +47,7 @@ ADD nginx-conf.diff /tmp/nginx-conf.diff
 RUN cd /etc; patch -p1 < /tmp/nginx-conf.diff && rm /tmp/nginx-conf.diff
 
 WORKDIR /
+EXPOSE 22 80
+ENTRYPOINT ["/opt/init-wrapper/sbin/entrypoint.sh"]
+CMD ["/sbin/init"]
 
