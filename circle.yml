@@ -1,0 +1,13 @@
+machine:
+  services:
+    - docker
+
+test:
+  override:
+    - cd jessie-ngx_mruby &&
+      docker build .
+    - cd sid &&
+      docker build .
+    - cd sid-ngx_mruby &&
+      docker build .
+
