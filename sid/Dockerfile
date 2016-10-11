@@ -2,7 +2,7 @@ FROM minimum2scp/baseimage:latest
 
 MAINTAINER YAMADA Tsuyoshi <tyamada@minimum2scp.org>
 
-ARG NGINX_VERSION=1.11.4
+ARG NGINX_VERSION=1.11.5
 ARG DEB_BASE_REVISION=1~jessie
 
 RUN sed -i -e 's/httpredir.debian.org/ftp.jp.debian.org/' /etc/apt/sources.list
