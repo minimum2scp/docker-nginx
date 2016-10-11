@@ -28,7 +28,7 @@ RUN debuild -rfakeroot -uc -us
 USER root
 WORKDIR /home/debian/build
 
-RUN dpkg -i nginx_${NGINX_VERSION}-1~sid+local1_amd64.deb nginx-module-njs_${NGINX_VERSION}.0.1.2-1~`lsb_release -cs`_amd64.deb
+RUN dpkg -i nginx_${NGINX_VERSION}-1~sid+local1_amd64.deb nginx-module-njs_${NGINX_VERSION}.0.1.3-1~`lsb_release -cs`_amd64.deb
 RUN apt-get install -f -y --no-install-recommends
 
 WORKDIR /
