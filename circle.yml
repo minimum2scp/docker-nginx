@@ -1,0 +1,36 @@
+machine:
+  services:
+    - docker
+
+general:
+  artifacts:
+    - deb/jessie-ngx_mruby
+    - deb/sid
+    - deb/sid-ngx_mruby
+
+test:
+  override:
+    - tgt=jessie-ngx_mruby &&
+      cd $tgt &&
+      docker build -t minimum2scp/nginx:${tgt} .
+
+    - tgt=jessie-ngx_mruby &&
+      mkdir -p deb/${tgt} &&
+     ./copy-packages.sh minimum2scp/nginx:${tgt} deb/${tgt}
+
+    - tgt=sid &&
+      cd $tgt &&
+      docker build -t minimum2scp/nginx:${tgt} .
+
+    - tgt=sid &&
+      mkdir -p deb/${tgt} &&
+     ./copy-packages.sh minimum2scp/nginx:${tgt} deb/${tgt}
+
+    - tgt=sid-ngx_mruby &&
+      cd $tgt &&
+      docker build -t minimum2scp/nginx:${tgt} .
+
+    - tgt=sid-ngx_mruby &&
+      mkdir -p deb/${tgt} &&
+     ./copy-packages.sh minimum2scp/nginx:${tgt} deb/${tgt}
+
