@@ -20,6 +20,6 @@ else
 fi
 
 docker run ${docker_run_rm} --workdir /home/debian/build --user debian --entrypoint /bin/sh \
- "${image_name}" -c "tar cf - --exclude=nginx-1.11.4 *.deb" \
+ "${image_name}" -c "tar cf - --exclude=nginx-1.11.5 *.deb" \
  | tar xf - -C "${dest_dir}"
 
