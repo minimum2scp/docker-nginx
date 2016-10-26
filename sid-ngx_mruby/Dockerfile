@@ -63,13 +63,14 @@ RUN patch -p0 < /tmp/njs-debian-control.diff
 RUN debuild -rfakeroot -uc -us
 
 
-WORKDIR /home/debian/build
-ADD http://nginx.org/download/nginx-${NGINX_VERSION}.tar.gz /home/debian/build/
-RUN sudo chown debian:debian /home/debian/build/nginx-${NGINX_VERSION}.tar.gz
+RUN mkdir /home/debian/build2
+WORKDIR /home/debian/build2
+ADD http://nginx.org/download/nginx-${NGINX_VERSION}.tar.gz /home/debian/build2/
+RUN sudo chown debian:debian /home/debian/build2/nginx-${NGINX_VERSION}.tar.gz
 RUN mv nginx-${NGINX_VERSION}.tar.gz nginx-module-mruby_${NGINX_VERSION}.orig.tar.gz
 RUN tar xf nginx-module-mruby_${NGINX_VERSION}.orig.tar.gz
 
-WORKDIR /home/debian/build/nginx-${NGINX_VERSION}
+WORKDIR /home/debian/build2/nginx-${NGINX_VERSION}
 
 ADD nginx-module-mruby/debian/ debian/
 
@@ -86,9 +87,9 @@ RUN debuild -rfakeroot -uc -us
 
 
 USER root
-WORKDIR /home/debian/build
+WORKDIR /home/debian
 
-RUN dpkg -i nginx_${NGINX_VERSION}-1~sid+local1_amd64.deb nginx-module-njs_${NGINX_VERSION}.${NJS_VERSION}-1~sid+local1_amd64.deb nginx-module-mruby_${DEB_NGINX_MODULE_MRUBY_VERSION}_amd64.deb
+RUN dpkg -i build/nginx_${NGINX_VERSION}-1~sid+local1_amd64.deb build/nginx-module-njs_${NGINX_VERSION}.${NJS_VERSION}-1~sid+local1_amd64.deb build2/nginx-module-mruby_${DEB_NGINX_MODULE_MRUBY_VERSION}_amd64.deb
 RUN apt-get install -f -y --no-install-recommends
 
 ADD nginx-conf.diff /tmp/nginx-conf.diff
